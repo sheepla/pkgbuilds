@@ -1,6 +1,5 @@
 # Maintainer Sheepla
-pkgname=textimg-git
-_pkgname="${pkgname/-git/}"
+pkgname=textimg
 
 pkgver=3.0.6
 pkgrel=1
@@ -17,7 +16,10 @@ source=("https://github.com/jiro4989/textimg/releases/download/v${pkgver}/textim
 md5sums=('6c482f6b80419b26486cbf7e05bebab2')
 
 package() {
+    # Install licence file
     curl "https://raw.githubusercontent.com/jiro4989/textimg/master/LICENSE" -o LICENCE
     install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
-    install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # install binary
+    install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
