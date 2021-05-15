@@ -1,0 +1,28 @@
+# Maintainer Sheepla
+pkgname=memo-git
+_pkgname="${pkgname/-git/}"
+
+pkgver=0.0.13
+pkgrel=1
+pkgdesc="A command line tool for taking notes"
+url="https://github.com/mattn/memo"
+license=("MIT")
+arch=("x86_64")
+depends=()
+conflicts=("memo")
+provides=()
+replaces=()
+optdepends=(
+    "fzf: for select command"
+    "peco: for select command"
+    "the_silver_searcher: for grep command"
+)
+source=("https://github.com/mattn/memo/releases/download/v${pkgver}/memo_v${pkgver}_linux_amd64.tar.gz")
+md5sums=("df681a771118aa2ac8a113b95b88b37712118b22aaef4b6d4ec241f2b585081a ")
+
+package() {
+    cd "${srcdir}"
+    install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+}
