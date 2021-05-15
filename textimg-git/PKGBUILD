@@ -1,6 +1,6 @@
 # Maintainer Sheepla
-pkgname=textimg-bin
-_pkgname="${pkgname/-bin/}"
+pkgname=textimg-git
+_pkgname="${pkgname/-git/}"
 
 pkgver=3.0.6
 pkgrel=1
