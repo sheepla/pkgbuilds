@@ -1,0 +1,23 @@
+# Maintainer Sheepla
+pkgname=textimg-bin
+_pkgname="${pkgname/-bin/}"
+
+pkgver=3.0.6
+pkgrel=1
+pkgdesc="Command to convert from color text (ANSI or 256) to image"
+url="https://github.com/jiro4989/textimg"
+license=("MIT")
+arch=('x86_64')
+depends=()
+conflicts=()
+provides=()
+replaces=()
+optdepends=()
+source=("https://github.com/jiro4989/textimg/releases/download/v${pkgver}/textimg-linux-amd64.tar.gz")
+md5sums=('6c482f6b80419b26486cbf7e05bebab2')
+
+package() {
+    curl "https://raw.githubusercontent.com/jiro4989/textimg/master/LICENSE" -o LICENCE
+    install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+    install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+}
