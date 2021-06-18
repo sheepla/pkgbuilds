@@ -1,5 +1,6 @@
 # Maintainer Sheepla
-pkgname=gomi
+_pkgname=gomi
+pkgname=gomi-bin
 
 pkgver=1.1.1
 pkgrel=1
@@ -14,7 +15,7 @@ replaces=()
 optdepends=()
 
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_linux_x86_64.tar.gz"
+    "${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.tar.gz"
     "LICENSE.html::https://b4b4r07.mit-license.org/"
     "https://raw.githubusercontent.com/b4b4r07/gomi/master/README.md"
 )
@@ -25,14 +26,14 @@ package() {
     cd "${srcdir}"
 
     # Install binary
-    install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Install licence file
-    _licence_dir="${pkgdir}/usr/share/licences/${pkgname}/LICENCE.html"
+    _licence_dir="${pkgdir}/usr/share/licences/${_pkgname}/LICENCE.html"
     install -Dm 644 LICENSE.html ${_licence_dir}
 
     # Install README file
-    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}/README.md"
     install -Dm 644 README.md ${_doc_dir}
 }
 
