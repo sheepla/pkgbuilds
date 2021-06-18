@@ -16,8 +16,8 @@ package() {
     install -dm755 ${_ttf_dest_dir}
     install -m644 SpicaNeue-*.ttf ${pkgdir}/usr/share/fonts/TTF/
 
-    _licence_dir="${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d ${_licence_dir}
+    _license_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d ${_license_dir}
     install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 
     _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"

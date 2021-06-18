@@ -22,8 +22,8 @@ package() {
     cd ${srcdir}
     install -Dm755 ojichat-rs ${pkgdir}/usr/bin/${_pkgname}
 
-    _licence_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
-    install -d ${_licence_dir}
+    _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d ${_license_dir}
     install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}
 
     _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}"

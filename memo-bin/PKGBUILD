@@ -25,11 +25,11 @@ package() {
     cd ${srcdir}/${_pkgname}_v${pkgver}_linux_amd64
     install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    _licence_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
-    install -d ${_licence_dir}
-    install -Dm 644 LICENSE  ${_licence_dir}     
+    _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d ${_license_dir}
+    install -Dm 644 LICENSE  ${_license_dir}     
 
     _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}"
-    install -d ${_licence_dir}
+    install -d ${_license_dir}
     install -Dm 644 README.md ${_doc_dir}
 }
