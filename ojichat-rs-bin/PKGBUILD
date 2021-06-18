@@ -1,0 +1,32 @@
+# Maintainer: sheepla <>
+pkgname=ojichat-rs-bin
+_pkgname=ojichat-rs
+pkgver=0.1.4
+pkgrel=1
+pkgdesc="A joke command to generate prevert guy\'s message"
+arch=("x86_64")
+url="https://github.com/gamoutatsumi/ojichat_rs_cli"
+license=("MIT")
+source=(
+    "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/ojichat-rs-${arch}-unknown-linux-musl.zip"
+    "https://raw.githubusercontent.com/gamoutatsumi/ojichat_rs_cli/master/LICENSE"
+    "https://github.com/gamoutatsumi/ojichat_rs_cli/blob/master/README.md"
+)
+md5sums=(
+    "b9e9618204262c8f713d432f74aea8ec"
+    "SKIP" 
+    "SKIP"
+)
+
+package() {
+    cd ${srcdir}
+    install -Dm755 ojichat-rs ${pkgdir}/usr/bin/${_pkgname}
+
+    _licence_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d ${_licence_dir}
+    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}
+
+    _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}"
+    install -d ${_doc_dir}
+    install -D -m644 README.md ${pkgdir}/usr/share/doc/${_pkgname}
+}
