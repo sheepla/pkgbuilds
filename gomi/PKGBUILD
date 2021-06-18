@@ -13,21 +13,26 @@ provides=()
 replaces=()
 optdepends=()
 
-source=("${url}/releases/download/v${pkgver}/${pkgname}_linux_x86_64.tar.gz")
-md5sums=("9ba3b4f7b095a5eea9c3a06b46df1967")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_linux_x86_64.tar.gz"
+    "LICENSE.html::https://b4b4r07.mit-license.org/"
+    "https://raw.githubusercontent.com/b4b4r07/gomi/master/README.md"
+)
+
+md5sums=("SKIP" "SKIP" "SKIP")
 
 package() {
     cd "${srcdir}"
 
-    # Install licence file
-    curl "https://b4b4r07.mit-license.org/" -o LICENCE.html
-    install -Dm 644 LICENCE.html "${pkgdir}/usr/share/licences/${pkgname}/LICENCE.html"
-
-    # Install README file
-    curl "https://raw.githubusercontent.com/b4b4r07/gomi/master/README.md" -o README.md
-    install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
     # Install binary
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+    # Install licence file
+    _licence_dir="${pkgdir}/usr/share/licences/${pkgname}/LICENCE.html"
+    install -Dm 644 LICENSE.html ${_licence_dir}
+
+    # Install README file
+    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm 644 README.md ${_doc_dir}
 }
 
