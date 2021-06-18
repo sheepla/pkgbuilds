@@ -2,7 +2,7 @@
 
 My package build files for Arch Linux
 
-## Installation: 
+## Installation
 
 You need the `base-devel` package to build Arch Linux packages.
 
