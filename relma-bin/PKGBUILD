@@ -1,0 +1,43 @@
+# Maintainer Sheepla
+_pkgname=relma
+pkgname=relma-bin
+
+pkgver=1.1.7
+pkgrel=1
+pkgdesc="GitHub Releases Management cli "
+url=""https://github.com/jiro4989/relma
+license=("MIT")
+arch=("x86_64")
+depends=()
+conflicts=()
+provides=()
+replaces=()
+optdepends=()
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/relma-linux-amd64.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/jiro4989/relma/master/LICENSE"
+    "README.adoc::https://raw.githubusercontent.com/jiro4989/relma/master/README.adoc"
+    "README_ja.adoc::https://raw.githubusercontent.com/jiro4989/relma/master/README_ja.adoc"
+)
+
+md5sums=("ca3b99cdc359b0dd6bd3995f866f0420" "SKIP" "SKIP" "SKIP")
+
+package() {
+    cd ${srcdir}
+
+    # Install binary
+    install -Dm 755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Install license file
+    _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d ${_license_dir}
+    install -Dm 644 LICENSE ${_license_dir}
+
+    # Install README file
+    _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}/"
+    install -d ${_doc_dir}
+    install -Dm 644 README.adoc ${_doc_dir}
+    install -Dm 644 README_ja.adoc ${_doc_dir}
+}
+
