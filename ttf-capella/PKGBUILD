@@ -12,17 +12,18 @@ md5sums=("SKIP")
 package() {
     cd ${srcdir}
 
-    _ttf_dest_dir="${pkgdir}/usr/share/fonts/TTF/"
-    install -d ${_ttf_dest_dir}
+    _ttf_dest_dir="${pkgdir}/usr/share/fonts/TTF"
+    install -dm755 ${_ttf_dest_dir}
     install -m644 Capella*.ttf ${_ttf_dest_dir}
 
-    _licence_dir="${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-    install -d ${_licence_dir}
-    install -m644 LICENSE.txt ${_licence_dir}
-
-    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}/README.txt"
+    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
     install -d ${_doc_dir}
     install -m644 README.txt  ${_doc_dir}
+
+    _licence_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d ${_licence_dir}
+    install -m644 IPA_Font_License_Agreement_v1.0.txt ${_licence_dir}
+    install -m644 "Roboto Font LICENSE.txt" ${_licence_dir}
 }
 
 post_install() {
