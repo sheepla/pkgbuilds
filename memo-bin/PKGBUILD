@@ -1,5 +1,6 @@
 # Maintainer Sheepla
-pkgname=memo
+pkgname=memo-bin
+_pkgname=memo
 
 pkgver=0.0.13
 pkgrel=1
@@ -17,18 +18,18 @@ optdepends=(
     "the_silver_searcher: for grep command"
 )
 
-source=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_amd64.tar.gz")
+source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
 md5sums=("82548bed3826c7aaf7dc600b40321cac")
 
 package() {
-    cd ${srcdir}/${pkgname}_v${pkgver}_linux_amd64
-    install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    cd ${srcdir}/${_pkgname}_v${pkgver}_linux_amd64
+    install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    _licence_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+    _licence_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
     install -d ${_licence_dir}
     install -Dm 644 LICENSE  ${_licence_dir}     
 
-    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+    _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}"
     install -d ${_licence_dir}
     install -Dm 644 README.md ${_doc_dir}
 }
