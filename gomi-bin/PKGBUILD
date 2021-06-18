@@ -28,9 +28,9 @@ package() {
     # Install binary
     install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # Install licence file
-    _licence_dir="${pkgdir}/usr/share/licences/${_pkgname}/LICENCE.html"
-    install -Dm 644 LICENSE.html ${_licence_dir}
+    # Install license file
+    _license_dir="${pkgdir}/usr/share/license/${_pkgname}/LICENCE.html"
+    install -Dm 644 LICENSE.html ${_license_dir}
 
     # Install README file
     _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}/README.md"
