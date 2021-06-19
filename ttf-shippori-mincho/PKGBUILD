@@ -1,0 +1,57 @@
+# Maintainer: sheepla <>
+
+pkgname=ttf-shippori-mincho
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Japanese old style serif font family based on GenRyu Mincho"
+arch=("any")
+
+url="https://github.com/fontdasu/ShipporiMincho"
+_raw_url="https://github.com/fontdasu/ShipporiMincho/raw/master/fonts/ttf/"
+
+license=("custom:OFL")
+
+source=(
+    "${_raw_url}/ShipporiMincho-Regular.ttf"
+    "${_raw_url}/ShipporiMincho-Medium.ttf"
+    "${_raw_url}/ShipporiMincho-SemiBold.ttf"
+    "${_raw_url}/ShipporiMincho-Bold.ttf"
+    "${_raw_url}/ShipporiMincho-ExtraBold.ttf"
+    "${_raw_url}/ShipporiMinchoB1-Regular.ttf"
+    "${_raw_url}/ShipporiMinchoB1-Medium.ttf"
+    "${_raw_url}/ShipporiMinchoB1-SemiBold.ttf"
+    "${_raw_url}/ShipporiMinchoB1-Bold.ttf"
+    "${_raw_url}/ShipporiMinchoB1-ExtraBold.ttf"
+    "https://raw.githubusercontent.com/google/fonts/main/ofl/shipporimincho/OFL.txt"
+)
+
+md5sums=(
+    "48bb8be3ed26fbe46f981ad45036bdae"
+    "00669cc5d50c07b472ea6e7b334114f2"
+    "32b28c628349edbb825e1ad6179517f2"
+    "236eac7c5642bbb4fe6fbb3bf3fe084c"
+    "fe6bf60c0d816a436c13f649e0ee5619"
+    "53d3210a861c64b5a8c67cc478e056dc"
+    "c5a373280e7dca37bfd6dfb0be7c87b3"
+    "6e49df4a8bbc36a79c8b2b4f20edf187"
+    "9590db72f6dfcfcd306ae48e7e72b808"
+    "46626c4e3711e295e545b9e3475d09b4"
+    "SKIP"
+)
+
+package() {
+    cd ${srcdir}
+
+    _ttf_dest_dir="${pkgdir}/usr/share/fonts/TTF"
+    install -dm755 ${_ttf_dest_dir}
+    install -m644 ShipporiMincho-*.ttf ${_ttf_dest_dir}
+    install -m644 ShipporiMinchoB1-*.ttf ${_ttf_dest_dir}
+
+    _license_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d ${_license_dir}
+    install -m644 OFL.txt ${_license_dir}
+}
+
+post_install() {
+    fc-cache -f # Update fontconfig cache
+}
