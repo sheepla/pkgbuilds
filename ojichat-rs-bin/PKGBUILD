@@ -10,7 +10,7 @@ license=("MIT")
 source=(
     "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/ojichat-rs-${arch}-unknown-linux-musl.zip"
     "LICENSE::https://raw.githubusercontent.com/gamoutatsumi/ojichat_rs_cli/master/LICENSE"
-    "README.md::https://github.com/gamoutatsumi/ojichat_rs_cli/blob/master/README.md"
+    "README.md::https://raw.githubusercontent.com/gamoutatsumi/ojichat_rs_cli/master/README.md"
 )
 md5sums=(
     "b9e9618204262c8f713d432f74aea8ec"
