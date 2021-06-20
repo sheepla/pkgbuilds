@@ -1,0 +1,34 @@
+# Maintainer
+pkgname=funnychar-git
+_pkgname=funnychar
+pkgver=HEAD
+pkgrel=1
+pkgdesc="A command to convert to decorative characters"
+url="https://github.com/kanata2003/funnychar"
+license=("MIT")
+arch=("any")
+depends=("nkf")
+conflicts=()
+provides=()
+replaces=()
+source=(
+    "https://raw.githubusercontent.com/kanata2003/funnychar/master/funnychar"
+    "https://raw.githubusercontent.com/kanata2003/funnychar/master/README.md"
+    "https://raw.githubusercontent.com/kanata2003/funnychar/master/LICENSE"
+)
+
+sha256sums=("SKIP" "SKIP" "SKIP")
+
+package() {
+    cd ${srcdir}
+    install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+
+    _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d ${_license_dir}
+    install -D -m644 LICENSE "${_license_dir}/LICENSE"
+
+    _doc_dir="${pkgdir}/usr/share/doc/${_pkgname}"
+    install -d ${_doc_dir}
+    install -D -m644 README.md "${_doc_dir}/README.md"
+}
+
