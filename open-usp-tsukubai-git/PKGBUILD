@@ -1,0 +1,21 @@
+pkgname=open-usp-tsukubai-git
+_pkgname="${pkgname//-git/}"
+pkgver=HEAD
+pkgrel=1
+pkgdesc="Unix-style commands for corporate systems"
+
+arch=("any")
+url="https://github.com/usp-engineers-community/Open-usp-Tukubai"
+license=("MIT")
+depends=("python")
+conflicts=("gsm")
+source=(
+    "${_pkgname}::git://github.com/usp-engineers-community/Open-usp-Tukubai.git"
+)
+
+md5sums=("SKIP")
+
+package() {
+    cd "${srcdir}/${_pkgname}"
+    LOCALBASE="${pkgdir}/usr" make install
+}
