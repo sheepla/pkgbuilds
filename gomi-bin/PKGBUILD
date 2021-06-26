@@ -29,7 +29,7 @@ package() {
     install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Install license file
-    _license_dir="${pkgdir}/usr/share/license/${_pkgname}/LICENCE.html"
+    _license_dir="${pkgdir}/usr/share/license/${_pkgname}/LICENSE.html"
     install -Dm 644 LICENSE.html ${_license_dir}
 
     # Install README file
