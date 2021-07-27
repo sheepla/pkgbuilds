@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # plglist.sh
 #   Show the names, versions and descriptions from the PKGBUILD file under the current directory
 #
