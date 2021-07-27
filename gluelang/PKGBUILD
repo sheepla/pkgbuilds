@@ -1,0 +1,36 @@
+# Maintainer Sheepla <>
+pkgname=gluelang
+_pkgname=GlueLang
+
+pkgver=0.2.0
+pkgrel=1
+pkgdesc=""
+url="https://github.com/ryuichiueda/GlueLang"
+license=("MIT")
+arch=("x86_64")
+depends=()
+conflicts=()
+provides=()
+replaces=()
+optdepends=()
+
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=("SKIP")
+
+build() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    make
+}
+
+package() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    install -Dm 755 glue "${pkgdir}/usr/bin/glue"
+
+    _license_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d ${_license_dir}
+    install -Dm 644 LICENSE.md ${_license_dir}     
+
+    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+    install -d ${_doc_dir}
+    install -Dm 644 README.md ${_doc_dir}
+}
