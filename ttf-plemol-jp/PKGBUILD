@@ -1,0 +1,26 @@
+# Maintainer: Sheepla <>
+
+pkgname=ttf-plemol-jp
+pkgver=3.0.0
+pkgrel=1
+pkgdesc="A Japanese programming font based on IBM Plex Sans and IBM Plex Mono"
+url="https://github.com/yuru7/PlemolJP"
+license=("custom")
+arch=("any")
+source=(
+  "${pkgname}-${pkgver}.zip::https://github.com/yuru7/PlemolJP/releases/download/v0.0.3/PlemolJP_v0.0.3.zip"
+  "LICENSE.txt::https://raw.githubusercontent.com/yuru7/PlemolJP/main/LICENSE.txt"
+)
+md5sums=("SKIP" "SKIP")
+
+package() {
+  cd ${srcdir}
+
+  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+  for _font in $(find ${srcdir} -name *.ttf -type f); do
+      install -m644 "${_font}" "${pkgdir}/usr/share/fonts/TTF"
+  done
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+}
