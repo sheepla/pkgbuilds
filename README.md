@@ -17,3 +17,9 @@ git clone https://github.com/sheepla/pkgbuilds.git
 cd some-pkg-name
 makepkg -si
 ```
+
+## TODO
+
+- publish to AUR
+- make PKGBUILDs more cleaner
+- more packages
