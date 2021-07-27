@@ -2,7 +2,7 @@
 pkgname=ttf-spica-neue
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Japanese font composited of Genshin Gohic, Kiri Gothic and Open Sans"
+pkgdesc="A Japanese font composited of Genshin Gohic, Kiri Gothic and Open Sans"
 arch=("any")
 url="https://thepopp.com/fonts/"
 license=("custom:Apache")
@@ -25,6 +25,3 @@ package() {
     install -D -m644 README.txt  ${pkgdir}/usr/share/doc/${pkgname}/README.txt
 }
 
-post_install() {
-    fc-cache -f # Update fontconfig cache
-}
