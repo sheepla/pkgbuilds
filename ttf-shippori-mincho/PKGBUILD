@@ -3,7 +3,7 @@
 pkgname=ttf-shippori-mincho
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Japanese old style serif font family based on GenRyu Mincho"
+pkgdesc="A Japanese old style serif font family based on GenRyu Mincho"
 arch=("any")
 
 url="https://github.com/fontdasu/ShipporiMincho"
@@ -52,6 +52,3 @@ package() {
     install -m644 OFL.txt ${_license_dir}
 }
 
-post_install() {
-    fc-cache -f # Update fontconfig cache
-}
