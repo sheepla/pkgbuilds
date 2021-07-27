@@ -4,7 +4,6 @@ My package build files for Arch Linux
 
 ## Packages
 
-
 | name | version | description |
 |------|---------|-------------|
 | funnychar-git | HEAD | A command to convert to decorative characters |
@@ -14,10 +13,11 @@ My package build files for Arch Linux
 | ojichat-rs-bin | 0.1.4 | A joke command to generate prevert guy's message |
 | open-usp-tsukubai-git | HEAD | Unix-style commands for corporate systems |
 | relma-bin | 1.1.7 | GitHub Releases Management cli  |
+| teip-bin | 1.2.1 | Select partial stdin and replace with the result of another command efficiently |
 | ttf-capella | 0.0.1 | A Japanese sans-serif font composited of IPA Gothic and Roboto |
 | ttf-plemol-jp | 0.0.3 | A Japanese programming font based on IBM Plex Sans and IBM Plex Mono |
-| ttf-shippori-mincho | 0.0.1 | Japanese old style serif font family based on GenRyu Mincho |
-| ttf-spica-neue | 0.0.1 | Japanese font composited of Genshin Gohic, Kiri Gothic and Open Sans |
+| ttf-shippori-mincho | 0.0.1 | A Japanese old style serif font family based on GenRyu Mincho |
+| ttf-spica-neue | 0.0.1 | A Japanese font composited of Genshin Gohic, Kiri Gothic and Open Sans |
 
 ## Installation
 
