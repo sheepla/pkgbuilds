@@ -4,7 +4,7 @@ _pkgname=GlueLang
 
 pkgver=0.2.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="A programming language that has a strong nature to be a glue of commands."
 url="https://github.com/ryuichiueda/GlueLang"
 license=("MIT")
 arch=("x86_64")
