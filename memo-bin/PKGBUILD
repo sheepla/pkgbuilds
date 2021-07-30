@@ -2,7 +2,7 @@
 pkgname=memo-bin
 _pkgname=memo
 
-pkgver=0.0.13
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="A command line tool for taking notes"
 url="https://github.com/mattn/memo"
@@ -18,8 +18,8 @@ optdepends=(
     "the_silver_searcher: for grep command"
 )
 
-source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
-md5sums=("82548bed3826c7aaf7dc600b40321cac")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
+md5sums=("SKIP")
 
 package() {
     cd ${srcdir}/${_pkgname}_v${pkgver}_linux_amd64
