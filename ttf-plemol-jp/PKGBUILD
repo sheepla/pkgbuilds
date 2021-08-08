@@ -1,7 +1,7 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-plemol-jp
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A Japanese programming font based on IBM Plex Sans and IBM Plex Mono"
 url="https://github.com/yuru7/PlemolJP"
