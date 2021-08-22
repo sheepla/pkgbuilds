@@ -1,0 +1,31 @@
+# Maintainer Sheepla
+pkgname=fluent-gtk-theme
+_pkgname="Fluent-gtk-theme"
+
+pkgver=2021.08.08
+_pkgver="${pkgver//\./-}"
+pkgrel=1
+pkgdesc="Fluent design gtk theme for linux desktops"
+url="https://github.com/vinceliuice/Fluent-gtk-theme"
+license=("GPL")
+arch=("any")
+depends=()
+conflicts=()
+provides=()
+replaces=()
+optdepends=()
+
+source=(
+    "${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
+)
+md5sums=("SKIP")
+
+package() {
+    cd "${srcdir}/${_pkgname}-${_pkgver}"
+    ./install.sh --dest "${pkgdir}/usr/share/themes"
+
+    _licenses_dir="${pkgdir}/usr/share/licenses"
+    install -d "${_licenses_dir}"
+    install -D -m 644 COPYING "${_licenses_dir}/${pkgname}/LICENSE"
+}
+
