@@ -18,17 +18,26 @@ source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgnam
 md5sums=("SKIP")
 
 package() {
+    # install binary
     cd "${srcdir}/${_pkgname}-linux_amd64"
     install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
+    # install LICENSE
     _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
     install -d 644 ${_license_dir}
     install -Dm 644 LICENSE ${_license_dir}
 
+    # install bash completion file
     _bash_completion_dir="${pkgdir}/usr/share/bash-completion/completions"
     install -d ${_bash_completion_dir}
     install -Dm 644 "autocomplete/${_pkgname}-completion.bash" "${_bash_completion_dir}/${_pkgname}"
 
+    # install zsh completion file
+    _zsh_completion_dir="${pkgdir}/usr/share/zsh/site-functions"
+    install -d ${_zsh_completion_dir}
+    install -Dm 644 "autocomplete/${_pkgname}-completion.bash" "${_zsh_completion_dir}/_${_pkgname}"
+
+    # install fish completion file
     _fish_completion_dir="${pkgdir}/usr/share/bash-completion/completions"
     install -d ${_fish_completion_dir}
     install -Dm 644 autocomplete/${_pkgname}.fish "${pkgdir}/usr/share/fish/completions/${_pkgname}.fish"
