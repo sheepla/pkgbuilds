@@ -1,0 +1,34 @@
+# Maintainer Sheepla
+pkgname=nordzy-cursor-theme
+
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Cursor theme using the Nord color palette and based on Vimix and cz-Viator."
+url="https://github.com/alvatip/Nordzy-cursors"
+license=("GPL")
+arch=("any")
+depends=()
+conflicts=()
+provides=()
+replaces=()
+optdepends=()
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-cursors.tar.gz"
+    "${pkgname}-${pkgver}-white.tar.gz::${url}/releases/download/v${pkgver}/Nordzy-cursors-white.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/alvatip/Nordzy-cursors/main/COPYING"
+)
+md5sums=("SKIP" "SKIP" "SKIP")
+
+package() {
+    cd "${srcdir}"
+
+    install -d "${pkgdir}/usr/share/icons/"
+    cp -r Nordzy-cursors       "${pkgdir}/usr/share/icons/"
+    cp -r Nordzy-cursors-white "${pkgdir}/usr/share/icons/"
+
+    _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d "${_licenses_dir}"
+    install -Dm 644 LICENSE "${_licenses_dir}/LICENSE"
+}
+
