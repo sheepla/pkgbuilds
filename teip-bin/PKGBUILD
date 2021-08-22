@@ -1,0 +1,31 @@
+# Maintainer: sheepla <>
+_pkgname=teip
+pkgname=teip-bin
+pkgver=1.2.1
+pkgrel=1
+pkgdesc="Select partial stdin and replace with the result of another command efficiently"
+arch=("x86_64")
+url="https://github.com/greymd/teip"
+license=("MIT")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/teip-${pkgver}.${arch}-unknown-linux-musl.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/greymd/teip/master/LICENSE"
+)
+md5sums=("SKIP" "SKIP")
+
+package() {
+    cd ${srcdir}
+    install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    _zsh_compdir="${pkgdir}/usr/share/zsh/site-functions/"
+    install -d "${_zsh_compdir}"
+    install -Dm644 completion/zsh/_teip "${_zsh_compdir}/_teip"
+
+    _man_dir="${pkgdir}/usr/share/man/man1/"
+    install -d "${_man_dir}"
+    install -Dm644 man/teip.1 "${_man_dir}/teip.1"
+
+    _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d "${_license_dir}"
+    install -Dm644 LICENSE "${_license_dir}/LICENSE"
+}
