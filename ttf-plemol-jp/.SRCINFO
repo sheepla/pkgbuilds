@@ -1,13 +1,17 @@
 pkgbase = ttf-plemol-jp
 	pkgdesc = A Japanese programming font based on IBM Plex Sans and IBM Plex Mono
-	pkgver = 0.0.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/yuru7/PlemolJP
 	arch = any
 	license = custom
-	source = ttf-plemol-jp-0.0.5.zip::https://github.com/yuru7/PlemolJP/releases/download/v0.0.5/PlemolJP_v0.0.5.zip
+	source = ttf-plemol-jp-0.3.0.zip::https://github.com/yuru7/PlemolJP/releases/download/v0.3.0/PlemolJP_v0.3.0.zip
+	source = ttf-plemol-jp-0.3.0-hs.zip::https://github.com/yuru7/PlemolJP/releases/download/v0.3.0/PlemolJP_HS_v0.3.0.zip
+	source = ttf-plemol-jp-0.3.0-nf.zip::https://github.com/yuru7/PlemolJP/releases/download/v0.3.0/PlemolJP_NF_v0.3.0.zip
 	source = LICENSE.txt::https://raw.githubusercontent.com/yuru7/PlemolJP/main/LICENSE.txt
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = f0bd82905f19004f888b4e6177d7b82380fa11d352de6a51a34b7af82ceb8fcf
+	sha256sums = 861dc8aaf502bc528ee8fb9ce14bf8fae7770f0149020525c7c8e3e9a23ad256
+	sha256sums = 1ecf9790136ab6e4091508583aba0452b0e3cbd22bf1f7a444315d58fa364bce
+	sha256sums = 75b08fcabe18769aac61b51089fdbadc4e3536b25748122d13f44c4d117f3c25
 
 pkgname = ttf-plemol-jp

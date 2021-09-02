@@ -1,7 +1,7 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-plemol-jp
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Japanese programming font based on IBM Plex Sans and IBM Plex Mono"
 url="https://github.com/yuru7/PlemolJP"
@@ -9,15 +9,19 @@ license=("custom")
 arch=("any")
 source=(
   "${pkgname}-${pkgver}.zip::https://github.com/yuru7/PlemolJP/releases/download/v${pkgver}/PlemolJP_v${pkgver}.zip"
+  "${pkgname}-${pkgver}-hs.zip::https://github.com/yuru7/PlemolJP/releases/download/v${pkgver}/PlemolJP_HS_v${pkgver}.zip"
+  "${pkgname}-${pkgver}-nf.zip::https://github.com/yuru7/PlemolJP/releases/download/v${pkgver}/PlemolJP_NF_v${pkgver}.zip"
   "LICENSE.txt::https://raw.githubusercontent.com/yuru7/PlemolJP/main/LICENSE.txt"
 )
-md5sums=("SKIP" "SKIP")
-
+sha256sums=('f0bd82905f19004f888b4e6177d7b82380fa11d352de6a51a34b7af82ceb8fcf'
+            '861dc8aaf502bc528ee8fb9ce14bf8fae7770f0149020525c7c8e3e9a23ad256'
+            '1ecf9790136ab6e4091508583aba0452b0e3cbd22bf1f7a444315d58fa364bce'
+            '75b08fcabe18769aac61b51089fdbadc4e3536b25748122d13f44c4d117f3c25')
 package() {
   cd ${srcdir}
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF"
-  for _font in $(find ${srcdir} -name *.ttf -type f); do
+  for _font in $(find ${srcdir} -name '*.ttf' -type f); do
       install -m644 "${_font}" "${pkgdir}/usr/share/fonts/TTF"
   done
 
