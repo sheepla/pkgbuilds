@@ -1,0 +1,25 @@
+# Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
+
+pkgname=otf-inter-ui
+pkgver=3.19
+pkgrel=1
+pkgdesc="A sans-serif font family designed for user interfaces"
+url="https://github.com/rsms/inter"
+license=("OFL")
+arch=("any")
+source=(
+  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Inter-${pkgver}.zip"
+)
+sha256sums=("150ab6230d1762a57bebf35dfc04d606ff91598a31d785f7f100356ecdcc0032")
+
+package() {
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/share/fonts/OTF"
+  find "${srcdir}/Inter Desktop/" "${srcdir}/Inter Variable/" -name "*.otf" -type f \
+    | xargs -I @ -- install -Dm644 @ "${pkgdir}/usr/share/fonts/OTF"
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
