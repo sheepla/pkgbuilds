@@ -1,0 +1,30 @@
+# Maintainer Sheepla
+pkgname=grex-bin
+_pkgname=grex
+
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="A command for generating regular expressions from user-provided test cases"
+url="https://github.com/pemistahl/grex"
+license=("Apache")
+arch=("x86_64")
+depends=()
+conflicts=()
+provides=()
+replaces=()
+optdepends=()
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-${arch}-unknown-linux-musl.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/pemistahl/grex/main/LICENSE"
+)
+md5sums=("SKIP" "SKIP")
+
+package() {
+    cd ${srcdir}
+    install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    _license_dir="${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -d ${_license_dir}
+    install -Dm 644 LICENSE  ${_license_dir}     
+}
