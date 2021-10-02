@@ -9,7 +9,7 @@ My package build files for Arch Linux
 | funnychar-git | HEAD | A command to convert to decorative characters |
 | ttf-spica-neue | 0.0.1 | A Japanese font composited of Genshin Gohic, Kiri Gothic and Open Sans |
 | s-search | 0.5.16 | A command line tool for taking notes |
-| ttf-plemol-jp | 0.3.0 | A Japanese programming font based on IBM Plex Sans and IBM Plex Mono |
+| ttf-plemol-jp | 0.4.0 | A Japanese programming font based on IBM Plex Sans and IBM Plex Mono |
 | gluelang | 0.2.0 | A programming language that has a strong nature to be a glue of commands. |
 | ttf-shippori-mincho | 0.0.1 | A Japanese old style serif font family based on GenRyu Mincho |
 | memo-bin | 0.0.15 | A command line tool for taking notes |
