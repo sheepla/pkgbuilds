@@ -1,0 +1,27 @@
+# Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
+
+pkgname=ttf-ingenui
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="A Japanese sans-serif font composited of GenShin Gothic and Inter"
+url="https://github.com/yuru7/InGenUI"
+license=("OFL")
+arch=("any")
+source=(
+  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/InGenUIN_v${pkgver}.zip"
+  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/InGenUI_v${pkgver}.zip"
+  LICENSE::https://raw.githubusercontent.com/yuru7/InGenUI/main/LICENCE.txt
+)
+sha256sums=("SKIP" "SKIP" "SKIP")
+
+package() {
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+  find . -name "*.ttf" -type f \
+    | xargs -I @ -- install -Dm644 @ "${pkgdir}/usr/share/fonts/TTF"
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
