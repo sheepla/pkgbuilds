@@ -1,0 +1,26 @@
+# Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
+
+pkgname=ttf-udev-gothic
+pkgver=0.0.5
+pkgrel=1
+pkgdesc="A Japanese programming font based on JetBrains Mono and BIZ UD Gothic"
+url="https://github.com/yuru7/udev-gothic"
+license=("OFL")
+arch=("any")
+source=(
+  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/UDEVGothic_v${pkgver}.zip"
+  "LICENSE::https://raw.githubusercontent.com/yuru7/udev-gothic/main/OFL.txt"
+)
+sha256sums=("SKIP" "SKIP")
+package() {
+  cd ${srcdir}/UDEVGothic_v${pkgver}
+  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+  for _font in $(find . -name '*.ttf' -type f); do
+    echo "${_font}"
+    install -m644 "${_font}" "${pkgdir}/usr/share/fonts/TTF/"
+  done
+
+  cd ${srcdir}
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+}
