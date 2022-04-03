@@ -19,6 +19,7 @@ My package build files for Arch Linux
 | open-usp-tsukubai-git | HEAD | Unix-style commands for corporate systems |
 | ttf-capella | 0.0.1 | A Japanese sans-serif font composited of IPA Gothic and Roboto |
 | ojichat-rs-bin | 0.1.4 | A joke command to generate prevert guy's message |
+| ttf-udev-gothic | 0.0.9 | A Japanese programming font based on BIZ UD Gothic and JetBrains Mono |
 
 
 ## Installation

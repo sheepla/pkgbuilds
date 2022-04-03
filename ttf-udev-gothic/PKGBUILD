@@ -1,7 +1,7 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-udev-gothic
-pkgver=0.0.5
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="A Japanese programming font based on JetBrains Mono and BIZ UD Gothic"
 url="https://github.com/yuru7/udev-gothic"
@@ -9,7 +9,7 @@ license=("OFL")
 arch=("any")
 source=(
   "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/UDEVGothic_v${pkgver}.zip"
-  "LICENSE::https://raw.githubusercontent.com/yuru7/udev-gothic/main/OFL.txt"
+  "LICENSE::https://raw.githubusercontent.com/yuru7/udev-gothic/main/LICENSE"
 )
 sha256sums=("SKIP" "SKIP")
 package() {
