@@ -1,7 +1,7 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-udev-gothic
-pkgver=0.0.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Japanese programming font based on JetBrains Mono and BIZ UD Gothic"
 url="https://github.com/yuru7/udev-gothic"
