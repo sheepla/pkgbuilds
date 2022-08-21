@@ -1,27 +1,30 @@
 # Maintainer: sheepla <>
+
 pkgname=ttf-spica-neue
 pkgver=0.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A Japanese font composited of Genshin Gohic, Kiri Gothic and Open Sans"
 arch=("any")
 url="https://thepopp.com/fonts/"
-license=("custom:Apache")
+license=("Apache")
 source=("${pkgname}-${pkgver}.zip::https://thepopp.com/download/1299/")
-md5sums=("f72f6a7a26e96564160009c68519ebce")
+sha256sums=('c7b721c48680cd4aa013ae2baf380112122f4a113ca46e9e77c29c2a484929fb')
 
 package() {
-    cd ${srcdir}
+  cd "${srcdir}"
 
-    _ttf_dest_dir="${pkgdir}/usr/share/fonts/TTF"
-    install -dm755 ${_ttf_dest_dir}
-    install -m644 SpicaNeue-*.ttf ${pkgdir}/usr/share/fonts/TTF/
+  _ttf_dir="${pkgdir}/usr/share/fonts/TTF"
+  install -d "${_ttf_dir}"
+  for _font in $(find "${srcdir}" -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${_ttf_dir}"
+  done
 
-    _license_dir="${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d ${_license_dir}
-    install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${_licenses_dir}"
+  install -m644 LICENSE.txt "${_licenses_dir}"
 
-    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
-    install -d ${_doc_dir}
-    install -D -m644 README.txt  ${pkgdir}/usr/share/doc/${pkgname}/README.txt
+  _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+  install -d "${_doc_dir}"
+  install -m644 README.txt "${_doc_dir}"
 }
 
