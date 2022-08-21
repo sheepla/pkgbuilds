@@ -1,0 +1,43 @@
+# Maintainer: sheepla <>
+
+pkgname=ttf-shippori-mincho-git
+pkgver=r162.63431fe
+pkgrel=3
+pkgdesc="A Japanese old style serif font family based on GenRyu Mincho"
+arch=("any")
+url="https://github.com/fontdasu/ShipporiMincho"
+license=("custom:OFL")
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(
+  "${pkgname%-git}.git::git+https://github.com/fontdasu/ShipporiMincho.git"
+)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}.git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/${pkgname%-git}.git"
+
+  _ttf_dir="${pkgdir}/usr/share/fonts/TTF"
+  install -d "${_ttf_dir}"
+  for _font in $(find "${srcdir}" -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${_ttf_dir}"
+  done
+
+  _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname%-git}"
+  install -d "${_licenses_dir}"
+  install -m644 OFL.txt "${_licenses_dir}/LICENSE"
+
+  _doc_dir="${pkgdir}/usr/share/doc/${pkgname%-git}"
+  install -d "${_doc_dir}"
+  install -m644 README.md "${_doc_dir}/README.md"
+  install -m644 sample1.jpg "${_doc_dir}/sample1.jpg"
+  install -m644 sample2.pdf "${_doc_dir}/sample2.pdf"
+  install -m644 sample3.png "${_doc_dir}/sample3.png"
+  install -m644 sample4.png "${_doc_dir}/sample4.png"
+}
