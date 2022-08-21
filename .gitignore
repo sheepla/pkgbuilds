@@ -1,0 +1,7 @@
+*.zip
+*.tar.*
+doc-*
+lic-*
+*.git/
+pkg/
+src/
