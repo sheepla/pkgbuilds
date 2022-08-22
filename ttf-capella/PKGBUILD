@@ -1,31 +1,30 @@
 # Maintainer: sheepla <>
+
 pkgname=ttf-capella
 pkgver=0.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A Japanese sans-serif font composited of IPA Gothic and Roboto"
 arch=("any")
 url="https://thepopp.com/fonts/"
-license=("custom")
+license=("Apache" "custom:IPA Font License Agreement v1.0" "custom")
 source=("${pkgname}-${pkgver}.zip::https://thepopp.com/download/890")
-md5sums=("SKIP")
+sha256sums=('b9c77addc3b9ed67d0c0186974959fa364f0c0ad9413e3ced2f4b56d5103f54b')
 
 package() {
-    cd ${srcdir}
+  cd "${srcdir}"
 
-    _ttf_dest_dir="${pkgdir}/usr/share/fonts/TTF"
-    install -dm755 ${_ttf_dest_dir}
-    install -m644 Capella*.ttf ${_ttf_dest_dir}
+  _ttf_dir="${pkgdir}/usr/share/fonts/TTF"
+  install -d "${_ttf_dir}"
+  for _font in $(find "${srcdir}" -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${_ttf_dir}"
+  done
 
-    _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
-    install -d ${_doc_dir}
-    install -m644 README.txt  ${_doc_dir}
+  _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${_licenses_dir}"
+  install -m644 IPA_Font_License_Agreement_v1.0.txt "${_licenses_dir}"
+  install -m644 "Roboto Font LICENSE.txt" "${_licenses_dir}"
 
-    _license_dir="${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d ${_license_dir}
-    install -m644 IPA_Font_License_Agreement_v1.0.txt ${_license_dir}
-    install -m644 "Roboto Font LICENSE.txt" ${_license_dir}
-}
-
-post_install() {
-    fc-cache -f # Update fontconfig cache
+  _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+  install -d "${_doc_dir}"
+  install -m644 README.txt "${_doc_dir}"
 }
