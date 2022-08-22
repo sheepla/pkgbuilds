@@ -1,27 +1,36 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-ingenui
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.2.1
+pkgrel=3
 pkgdesc="A Japanese sans-serif font composited of GenShin Gothic and Inter"
 url="https://github.com/yuru7/InGenUI"
-license=("OFL")
+license=("custom:OFL" "MIT")
 arch=("any")
 source=(
-  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/InGenUIN_v${pkgver}.zip"
-  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/InGenUI_v${pkgver}.zip"
-  LICENSE::https://raw.githubusercontent.com/yuru7/InGenUI/main/LICENCE.txt
+  "${pkgname}-uin-${pkgver}.zip::${url}/releases/download/v${pkgver}/InGenUIN_v${pkgver}.zip"
+  "${pkgname}-ui-${pkgver}.zip::${url}/releases/download/v${pkgver}/InGenUI_v${pkgver}.zip"
+  "lic-LICENSE::https://raw.githubusercontent.com/yuru7/InGenUI/v${pkgver}/LICENCE.txt"
+  "doc-README.md::https://raw.githubusercontent.com/yuru7/IngenUI/v${pkgver}/README.md"
 )
-sha256sums=("SKIP" "SKIP" "SKIP")
+sha256sums=('e851b5beec8504698f63224d7cabaf3c97e3a5110dfe75b159581740dc700b55'
+            'b82534f02aabce93aef2d5fd53c29028c20821b172f23647c889dbe790c3864b'
+            '5ec28be4b244d4cb0fb35d21eef88a49b19149a21e68f64539cfe9bbdb8ddcc5'
+            'f205afe242ab59010dbd7d6b72bf0e5c1a3799a032351af8a81ac0b7dcd0ad9e')
 
 package() {
   cd "${srcdir}"
 
-  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
-  find . -name "*.ttf" -type f \
-    | xargs -I @ -- install -Dm644 @ "${pkgdir}/usr/share/fonts/TTF"
+  install -d "${pkgdir}/usr/share/fonts/TTF"
+  for _font in $(find ${srcdir} -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${pkgdir}/usr/share/fonts/TTF"
+  done
 
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${_licenses_dir}"
+  install -m644 lic-LICENSE "${_licenses_dir}/LICENSE"
+
+  _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+  install -d "${_doc_dir}"
+  install -m644 doc-README.md "${_doc_dir}/README.md"
 }
-
