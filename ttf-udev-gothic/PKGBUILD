@@ -1,26 +1,37 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-udev-gothic
-pkgver=0.0.9
-pkgrel=1
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="A Japanese programming font based on JetBrains Mono and BIZ UD Gothic"
 url="https://github.com/yuru7/udev-gothic"
-license=("OFL")
+license=("custom:OFL" "MIT")
 arch=("any")
 source=(
   "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/UDEVGothic_v${pkgver}.zip"
-  "LICENSE::https://raw.githubusercontent.com/yuru7/udev-gothic/main/LICENSE"
+  "${pkgname}-nf-${pkgver}.zip::${url}/releases/download/v${pkgver}/UDEVGothic_NF_v${pkgver}.zip"
+  "lic-LICENSE::https://raw.githubusercontent.com/yuru7/udev-gothic/v${pkgver}/LICENSE"
+  "doc-README.md::https://raw.githubusercontent.com/yuru7/udev-gothic/v${pkgver}/README.md"
 )
-sha256sums=("SKIP" "SKIP")
+sha256sums=('511fcafeb97dec7f464653d7026b80b987c20311d9a8247c03ba946db9dca45e'
+            'b8a76d45628f9e621044be9545620d62efaf749a793b6bfa39b38ace7dfbe0f1'
+            '3e04c747c9c9535224f6163a290caf022877759db5183a00aef6134d3f5643f0'
+            '6ee82c02eeb49911480b54f7d5f0dd50708796f64ac015e01889dbd8f138e2bc')
+
 package() {
-  cd ${srcdir}/UDEVGothic_v${pkgver}
-  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
-  for _font in $(find . -name '*.ttf' -type f); do
-    echo "${_font}"
-    install -m644 "${_font}" "${pkgdir}/usr/share/fonts/TTF/"
+  cd "${srcdir}"
+  
+  _ttf_dir="${pkgdir}/usr/share/fonts/TTF"
+  install -d "${_ttf_dir}"
+  for _font in $(find "${srcdir}" -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${_ttf_dir}"
   done
 
-  cd ${srcdir}
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${_licenses_dir}"
+  install -m644 lic-LICENSE "${_licenses_dir}/LICENSE"
+
+  _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+  install -d "${_doc_dir}"
+  install -m644 doc-README.md "${_doc_dir}/README.md"
 }
