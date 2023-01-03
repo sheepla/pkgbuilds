@@ -1,7 +1,7 @@
 # Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
 
 pkgname=ttf-plemol-jp
-pkgver=1.2.6
+pkgver=1.4.0
 pkgrel=3
 pkgdesc="A Japanese programming font based on IBM Plex Sans and IBM Plex Mono"
 url="https://github.com/yuru7/PlemolJP"
@@ -11,14 +11,17 @@ source=(
   "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/PlemolJP_v${pkgver}.zip"
   "${pkgname}-${pkgver}-hs.zip::${url}/releases/download/v${pkgver}/PlemolJP_HS_v${pkgver}.zip"
   "${pkgname}-${pkgver}-nf.zip::${url}/releases/download/v${pkgver}/PlemolJP_NF_v${pkgver}.zip"
-  "lic-LICENSE::https://raw.githubusercontent.com/yuru7/PlemolJP/v${pkgver}/LICENSE"
-  "doc-README.md::https://raw.githubusercontent.com/yuru7/PlemolJP/v${pkgver}/README.md"
+  "LICENSE::https://raw.githubusercontent.com/yuru7/PlemolJP/v${pkgver}/LICENSE"
+  "README.md::https://raw.githubusercontent.com/yuru7/PlemolJP/v${pkgver}/README.md"
 )
-sha256sums=('97114df092be4d079395b125a6553ebc54fd34d28a5d068716113a75efe66ce7'
-            '6ddbf87bdd4c7c6d763a143cdd4d4d750d9bd4ca5871ac15c90b7c6e7c0fa846'
-            '8bf93f51d546f415c4f64d4fc0fc46aae15f18cd588d93c0c4eecdcc000f6118'
-            '52bbb5e729acc62435831d20641ece6a919e610100285ba183ef4d7233fb1e9a'
-            '73bd805042f7a5bf9a358ba3a7d779546d5fa425a5d8c1d460d647f805df73a6')
+
+sha256sums=(
+    'a416a6da71630edfab4fa9dd473920eba8a382e30f81f43f4ea3429217a1a989'
+    '980be30e550e466503a3552540e565702344e47515cd504b76e67a16a5980d9d'
+    '59f23d3795dae9dc62e3e356829cd496e0bdea8efefe8d7953a98ec5e85c6580'
+    'SKIP'
+    'SKIP'
+)
 
 package() {
   cd "${srcdir}"
@@ -31,9 +34,9 @@ package() {
 
   _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${_licenses_dir}"
-  install -m644 lic-LICENSE "${_licenses_dir}/LICENSE"
+  install -m644 LICENSE "${_licenses_dir}/LICENSE"
 
   _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
   install -d "${_doc_dir}"
-  install -m644 doc-README.md "${_doc_dir}/README.md"
+  install -m644 README.md "${_doc_dir}/README.md"
 }
