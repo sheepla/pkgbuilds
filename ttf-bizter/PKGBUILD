@@ -1,0 +1,33 @@
+# Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
+
+pkgname=ttf-bizter
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="A Japanese font for UI based on Inter and BIZ UDP Gothic"
+url="https://github.com/yuru7/BIZTER"
+license=("OFL")
+arch=("any")
+source=(
+  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/BIZTER_v${pkgver}.zip"
+  "LICENSE::https://raw.githubusercontent.com/yuru7/BIZTER/v${pkgver}/LICENSE"
+  "README.md::https://raw.githubusercontent.com/yuru7/BIZTER/v${pkgver}/README.md"
+)
+sha256sums=("SKIP" "SKIP" "SKIP")
+
+package() {
+  cd "${srcdir}"
+
+  _ttf_dir="${pkgdir}/usr/share/fonts/TTF"
+  install -d "${_ttf_dir}"
+  for _font in $(find "${srcdir}" -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${_ttf_dir}"
+  done
+
+  _licenses_dir="${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${_licenses_dir}"
+  install -m644 LICENSE "${_licenses_dir}/LICENSE"
+
+  _doc_dir="${pkgdir}/usr/share/doc/${pkgname}"
+  install -d "${_doc_dir}"
+  install -m644 README.md "${_doc_dir}/README.md"
+}

@@ -1,0 +1,23 @@
+# Maintainer: sheepla <hk7g9x43 at anonaddy dot me>
+
+pkgname=ttf-otf-line-seed-jp
+pkgver=1.2.6
+pkgrel=3
+pkgdesc="A Japanese sans-serif font, corporate font for LINE"
+url="https://seed.line.me/index_en.html"
+license=("OFL")
+arch=("any")
+source=(
+    "https://seed.line.me/src/images/fonts/LINE_Seed_JP.zip"
+)
+sha256sums=("SKIP")
+
+package() {
+  cd "${srcdir}"
+
+  _ttf_dir="${pkgdir}/usr/share/fonts/TTF"
+  install -d "${_ttf_dir}"
+  for _font in $(find "${srcdir}" -name '*.ttf' -type f); do
+    install -m644 "${_font}" "${_ttf_dir}"
+  done
+}
