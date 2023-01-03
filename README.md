@@ -4,7 +4,7 @@ My package build files for Arch Linux
 
 ## Packages
 
-| name | version | description |
+ name | version | description |
 |------|---------|-------------|
 | gluelang | 0.2.0 | A programming language that has a strong nature to be a glue of commands. |
 | s-search | 0.5.16 | A command line tool for taking notes |
@@ -19,7 +19,7 @@ My package build files for Arch Linux
 | ttf-otf-line-seed-jp | 1.2.6 | A Japanese sans-serif font, corporate font for LINE |
 | teip-bin | 1.2.1 | Select partial stdin and replace with the result of another command efficiently |
 | grex-bin | 1.3.0 | A command for generating regular expressions from user-provided test cases |
-| ttf-plemol-jp | 1.2.6 | A Japanese programming font based on IBM Plex Sans and IBM Plex Mono |
+| ttf-plemol-jp | 1.4.0 | A Japanese programming font based on IBM Plex Sans and IBM Plex Mono |
 | ttf-udev-gothic | 1.0.1 | A Japanese programming font based on JetBrains Mono and BIZ UD Gothic |
 | ttf-shippori-mincho-git | r162.63431fe | A Japanese old style serif font family based on GenRyu Mincho |
 | ojichat-rs-bin | 0.1.4 | A joke command to generate prevert guy's message |
