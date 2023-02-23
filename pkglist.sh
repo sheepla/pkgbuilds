@@ -8,7 +8,8 @@ cat << EOS
 |------|---------|-------------|
 EOS
 
-find . -name PKGBUILD | 
-    xargs -ro cat | 
-    awk -F '=' '/^pkgname=/{name=$2}; /pkgver=/{ver=$2} /pkgdesc=.*/{print "|", name, "|", ver, "|", $2, "|"}' | 
-    tr -d '"'
+find . -name PKGBUILD -print0 |
+xargs -0 \
+  awk -F '=' \
+  '/^pkgname=/{name=$2}; /^pkgver=/{ver=$2} /^pkgdesc=/{print "|", name, "|", ver, "|", $2, "|"}' |
+tr -d '"'
