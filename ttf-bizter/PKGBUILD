@@ -9,8 +9,8 @@ license=("OFL")
 arch=("any")
 source=(
   "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/BIZTER_v${pkgver}.zip"
-  "LICENSE::https://raw.githubusercontent.com/yuru7/BIZTER/v${pkgver}/LICENSE"
-  "README.md::https://raw.githubusercontent.com/yuru7/BIZTER/v${pkgver}/README.md"
+  "LICENSE::${url}/raw/main/LICENSE"
+  "README.md::${url}/raw/main/README.md"
 )
 sha256sums=("SKIP" "SKIP" "SKIP")
 
