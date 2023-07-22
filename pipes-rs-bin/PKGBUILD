@@ -1,0 +1,33 @@
+# Maintainer Sheepla
+pkgname=pipes-rs-bin
+
+pkgver=1.6.1
+pkgrel=1
+pkgdesc="Animated pipes terminal screensaver written in Rust"
+url="https://github.com/lhvy/pipes-rs"
+license=("custom:BlueOak")
+arch=("x86_64")
+depends=()
+conflicts=("pipes-rs")
+provides=()
+replaces=()
+optdepends=()
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/pipes-rs-linux-x86_64.tar.gz"
+    "README.md::${url}/raw/master/README.md"
+    "LICENSE.md::${url}/raw/master/LICENSE.md"
+)
+sha256sums=(
+    "6624096a080925a9d9c8de6c5d32f01d415fa6a0dde7204cddedbd05d58b2e33"
+    "SKIP"
+    "SKIP"
+)
+
+package() {
+    cd ${srcdir}
+    install -Dm 755 target/release/pipes-rs "${pkgdir}/usr/bin/pipes-rs"
+
+    install -Dm 644 README.md "${pkgdir}/usr/share/doc/pipes-rs/README.md"
+    install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/pipes-rs/LICENSE.md"
+}
